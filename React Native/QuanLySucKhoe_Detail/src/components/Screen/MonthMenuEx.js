@@ -5,7 +5,7 @@ export default class MonthMenuEx extends Component {
     return (
       // eslint-disable-next-line react-native/no-inline-styles
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Text>Thống kê Theo Tháng</Text>
+        <Text>Thống kê Theo Tháng MenuEx.js</Text>
       </View>
     );
   }

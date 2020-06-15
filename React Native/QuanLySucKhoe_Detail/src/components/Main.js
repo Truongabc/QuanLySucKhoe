@@ -17,11 +17,12 @@ import MenuExComponents from './Screen/MenuEx';
 import RegistrationComponents from './Screen/Registration';
 import SleepComponents from './Screen/Sleep';
 import HomeComponents from './Screen/Home';
+import Forgetpass from './Screen/Forgetpass';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 const Stack = createStackNavigator();
-const Tab = createBottomTabNavigator();
-const isLoggedIn = true;
+// const Tab = createBottomTabNavigator();
+// const isLoggedIn = false;//
 
 // function HomeScreen() {
 //   return (
@@ -31,29 +32,31 @@ const isLoggedIn = true;
 //     </View>
 //   );
 // }
+const homeTab = createBottomTabNavigator();
+function homeTabscreen() {
+  return (
+    <homeTab.Navigator>
+      <homeTab.Screen name="Home" component={HomeComponents} />
+      <homeTab.Screen name="MenuEx" component={MenuExComponents} />
+      <homeTab.Screen name="Jogging" component={JoggingComponents} />
+      <homeTab.Screen name="Sleep" component={SleepComponents} />
+    </homeTab.Navigator>
+  );
+}
+
 function Main() {
   return (
     <NavigationContainer>
-      {!isLoggedIn ? (
-        <Stack.Navigator>
-          <Stack.Screen name="Login" component={LoginComponents} />
-          <Stack.Screen
-            name="Registration"
-            component={RegistrationComponents}
-          />
-          <Stack.Screen name="Home" component={HomeComponents} />
-          <Stack.Screen name="Jogging" component={JoggingComponents} />
-          <Stack.Screen name="sleep" component={SleepComponents} />
-          <Stack.Screen name="MenuEx" component={MenuExComponents} />
-        </Stack.Navigator>
-      ) : (
-        <Tab.Navigator>
-          <Tab.Screen name="Home" component={HomeComponents} />
-          <Tab.Screen name="MenuEx" component={MenuExComponents} />
-          <Tab.Screen name="Jogging" component={JoggingComponents} />
-          <Tab.Screen name="sleep" component={SleepComponents} />
-        </Tab.Navigator>
-      )}
+      <Stack.Navigator screenOptions={{headerShow: false}}>
+        <Stack.Screen name="Login" component={LoginComponents} />
+        <Stack.Screen name="Registration" component={RegistrationComponents} />
+        <Stack.Screen name="Forgetpass" component={Forgetpass} />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="Home"
+          component={homeTabscreen}
+        />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

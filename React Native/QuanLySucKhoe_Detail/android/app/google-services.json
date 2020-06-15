@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "937941317525",
+    "firebase_url": "https://quanlysuckhoe-detail.firebaseio.com",
+    "project_id": "quanlysuckhoe-detail",
+    "storage_bucket": "quanlysuckhoe-detail.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:937941317525:android:978fd2ff0b5574f13ce89c",
+        "android_client_info": {
+          "package_name": "com.quanlysuckhoe_detail"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "937941317525-572s3e77vg97iel8r7f390gr8a0qvg04.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAk64emRiuYvpNpxzqV0gZ54_h9h0psYtw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "937941317525-572s3e77vg97iel8r7f390gr8a0qvg04.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
