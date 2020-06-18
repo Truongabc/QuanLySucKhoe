@@ -1,25 +1,38 @@
 import React, {Component} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet, Alert} from 'react-native';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
-import * as firebase from '@react-native-firebase/app';
+import fireApp from './fire';
 export default class Registration extends Component {
   state = {
     Name: '',
     email: '',
+    phone: '',
     password: '',
     errorShow: null,
   };
   handleRegistration = () => {
-    firebase
+    fireApp
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then((userCredentials) => {
-        return userCredentials.user
-          .updateProfile({
-            displayName: this.state.Name,
-          })
-          .catch((error) => this.setState({errorShow: error.message}));
-      });
+        userCredentials.user.updateProfile({
+          displayName: this.state.Name,
+          phone: this.state.phone,
+        });
+        Alert.alert(
+          'Thông báo!',
+          'Đăng ký thành công tài khoản' + this.state.email,
+          [
+            {
+              text: 'OK',
+              onPress: () => this.props.navigation.navigate('Registration'),
+            },
+          ],
+          {cancelable: false},
+        );
+        this.setState({email: '', password: '', Name: '', phone: ''});
+      })
+      .catch((error) => this.setState({errorShow: error.message}));
   };
   render() {
     return (

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet, Alert} from 'react-native';
 import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 // import * as firebase from '@react-native-firebase/app';
 import fireApp from './fire';
@@ -16,7 +16,13 @@ export default class Registration extends Component {
     auth
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        this.props.navigation.navigate('Home');
+        Alert.alert(
+          'Thông báo!',
+          'Đăng nhập thành công',
+          [{text: 'OK', onPress: () => this.props.navigation.navigate('Home')}],
+          {cancelable: false},
+        );
+        this.setState({email: '', password: '', Name: ''});
       })
       .catch((error) => this.setState({errorShow: error.message}));
   };
@@ -45,6 +51,7 @@ export default class Registration extends Component {
             <TextInput
               style={styles.input}
               autocapitalize="none"
+              secureTextEntry={true}
               onChangeText={(password) => this.setState({password})}
               value={this.state.password}
             />
