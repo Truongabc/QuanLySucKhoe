@@ -6,7 +6,6 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
-  ImageBackground,
 } from 'react-native';
 // import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import fireApp from './fire';
@@ -32,12 +31,12 @@ export default class DatabaseComponent extends Component {
         items.push({
           key: doc.key,
           Calo: doc.toJSON().Calo,
-          GiaVi: doc.toJSON().GiaVi,
+          Giavi: doc.toJSON().Giavi,
+          ID: doc.toJSON().ID,
           Images: doc.toJSON().Images,
           Make: doc.toJSON().Make,
           Name: doc.toJSON().Name,
-          KhoiLuong: doc.toJSON().KhoiLuong,
-          ID: doc.toJSON().ID,
+          khoiluong: doc.toJSON.khoiluong,
         });
         console.log(childSnapshot.val());
         this.setState({
@@ -49,38 +48,24 @@ export default class DatabaseComponent extends Component {
       });
     });
   }
+  onPressAdd = () => {
+    if (this.state.newAnimalName.trim() === '') {
+      alert('Animal name is blank');
+      return;
+    }
+    animalRef.push({
+      animalName: this.state.newAnimalName,
+    });
+  };
   render() {
     return (
-      <ImageBackground
-        source={require('../img/backMenuex.jpg')}
-        style={styles.ContainerImages}>
+      <View>
         <SafeAreaView>
-          <Text style={styles.inputTitle}>Gợi Ý Món Ăn</Text>
           <FlatList
             data={this.state.NameFood}
             renderItem={({item, index}) => {
               return (
-                <TouchableOpacity
-                  onPress={() => {
-                    this.props.navigation.setParams({
-                      Calo: item.Calo,
-                      GiaVi: item.GiaVi,
-                      Images: item.Images,
-                      Make: item.Make,
-                      Name: item.Name,
-                      KhoiLuong: item.KhoiLuong,
-                      ID: item.ID,
-                    });
-                    this.props.navigation.navigate('detailMenuEx', {
-                      Calo: item.Calo,
-                      GiaVi: item.GiaVi,
-                      Images: item.Images,
-                      Make: item.Make,
-                      Name: item.Name,
-                      KhoiLuong: item.KhoiLuong,
-                      ID: item.ID,
-                    });
-                  }}>
+                <TouchableOpacity onPress={this.navigation}>
                   <View style={styles.container}>
                     <Image source={{uri: item.Images}} style={styles.photo} />
                     <View style={styles.container_text}>
@@ -90,17 +75,13 @@ export default class DatabaseComponent extends Component {
                 </TouchableOpacity>
               );
             }}
-            F
           />
         </SafeAreaView>
-      </ImageBackground>
+      </View>
     );
   }
 }
 const styles = StyleSheet.create({
-  ContainerImages: {
-    flex: 1,
-  },
   container: {
     flex: 1,
     flexDirection: 'row',
@@ -112,13 +93,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: '#FFF',
     elevation: 2,
-  },
-  inputTitle: {
-    padding: 10,
-    paddingBottom: 15,
-    textAlign: 'center',
-    fontSize: 30,
-    color: '#FF3333',
   },
   title: {
     fontSize: 22,

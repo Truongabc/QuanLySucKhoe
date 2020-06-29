@@ -18,6 +18,7 @@ import RegistrationComponents from './Screen/Registration';
 import SleepComponents from './Screen/Sleep';
 import HomeComponents from './Screen/Home';
 import Forgetpass from './Screen/Forgetpass';
+import detailMenuEx from './Screen/detailMenuEx';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 const Stack = createStackNavigator();
@@ -48,9 +49,26 @@ function Main() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShow: false}}>
-        <Stack.Screen name="Login" component={LoginComponents} />
-        <Stack.Screen name="Registration" component={RegistrationComponents} />
-        <Stack.Screen name="Forgetpass" component={Forgetpass} />
+        <Stack.Screen
+          // options={{headerShown: false}}
+          name="Login"
+          component={LoginComponents}
+        />
+        <Stack.Screen
+          // options={{headerShown: false}}
+          name="Registration"
+          component={RegistrationComponents}
+        />
+        <Stack.Screen
+          // options={{headerShown: false}}
+          name="Forgetpass"
+          component={Forgetpass}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="detailMenuEx"
+          component={detailMenuEx}
+        />
         <Stack.Screen
           options={{headerShown: false}}
           name="Home"
