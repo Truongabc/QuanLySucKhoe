@@ -19,8 +19,9 @@ import SleepComponents from './Screen/Sleep';
 import HomeComponents from './Screen/Home';
 import Forgetpass from './Screen/Forgetpass';
 import detailMenuEx from './Screen/detailMenuEx';
+import chart from './Screen/chart';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-
+import detailCalo from './Screen/detailCalo';
 const Stack = createStackNavigator();
 // const Tab = createBottomTabNavigator();
 // const isLoggedIn = false;//
@@ -38,8 +39,8 @@ function homeTabscreen() {
   return (
     <homeTab.Navigator>
       <homeTab.Screen name="Home" component={HomeComponents} />
-      <homeTab.Screen name="MenuEx" component={MenuExComponents} />
       <homeTab.Screen name="Jogging" component={JoggingComponents} />
+      <homeTab.Screen name="MenuEx" component={MenuExComponents} />
       <homeTab.Screen name="Sleep" component={SleepComponents} />
     </homeTab.Navigator>
   );
@@ -68,6 +69,16 @@ function Main() {
           options={{headerShown: false}}
           name="detailMenuEx"
           component={detailMenuEx}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="detailCalo"
+          component={detailCalo}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="chart"
+          component={chart}
         />
         <Stack.Screen
           options={{headerShown: false}}

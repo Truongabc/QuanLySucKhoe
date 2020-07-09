@@ -90,7 +90,6 @@ export default class DatabaseComponent extends Component {
                 </TouchableOpacity>
               );
             }}
-            F
           />
         </SafeAreaView>
       </ImageBackground>
