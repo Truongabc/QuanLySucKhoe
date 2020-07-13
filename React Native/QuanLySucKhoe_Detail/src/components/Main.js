@@ -38,10 +38,10 @@ const homeTab = createBottomTabNavigator();
 function homeTabscreen() {
   return (
     <homeTab.Navigator>
-      <homeTab.Screen name="Home" component={HomeComponents} />
-      <homeTab.Screen name="Jogging" component={JoggingComponents} />
-      <homeTab.Screen name="MenuEx" component={MenuExComponents} />
-      <homeTab.Screen name="Sleep" component={SleepComponents} />
+      <homeTab.Screen name="CaNhan" component={HomeComponents} />
+      <homeTab.Screen name="BieuDo" component={JoggingComponents} />
+      <homeTab.Screen name="GoiYMon" component={MenuExComponents} />
+      <homeTab.Screen name="GiacNgu" component={SleepComponents} />
     </homeTab.Navigator>
   );
 }
@@ -51,17 +51,17 @@ function Main() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShow: false}}>
         <Stack.Screen
-          // options={{headerShown: false}}
+          options={{headerShown: false}}
           name="Login"
           component={LoginComponents}
         />
         <Stack.Screen
-          // options={{headerShown: false}}
+          options={{headerShown: false}}
           name="Registration"
           component={RegistrationComponents}
         />
         <Stack.Screen
-          // options={{headerShown: false}}
+          options={{headerShown: false}}
           name="Forgetpass"
           component={Forgetpass}
         />

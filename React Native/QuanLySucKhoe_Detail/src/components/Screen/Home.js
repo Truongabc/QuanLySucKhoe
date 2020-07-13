@@ -1,5 +1,13 @@
 import React, {Component} from 'react';
-import {Text, View, StyleSheet, Button} from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  Button,
+  TouchableHighlight,
+  Image,
+  ActivityIndicator,
+} from 'react-native';
 import fireApp from './fire';
 const rootRef = fireApp.database().ref();
 // const animalRef = rootRef.child('MenuEx/GoiY/01/');
@@ -18,7 +26,7 @@ export default class Home extends Component {
       Heavy: '',
       Name: '',
       Tall: '',
-      loading: false,
+      loading: true,
     };
   }
   componentDidMount() {
@@ -37,32 +45,40 @@ export default class Home extends Component {
       });
       console.log(Snapshot.val());
       console.log(this.state);
-      this.setState({
-        loading: false,
-      });
     });
+  }
+  componentWillMount() {
+    setTimeout(() => {
+      this.setState({loading: false});
+    }, 4000);
   }
   render() {
     return (
       <View style={styles.Container}>
-        <View style={styles.tops}>
-          <Text>
-            Email: {this.state.email} {'\n'}
-            UID: {this.state.uid}
-          </Text>
-        </View>
-        <View style={styles.bottoms}>
-          <Text> Tên: {this.state.Name}</Text>
-          <Text> Age: {this.state.Age}</Text>
-          <Text> Avata: {this.state.Avata}</Text>
-          <Text> key: {this.state.key}</Text>
-          <Text> Heavy: {this.state.Heavy}</Text>
-          <Text> Tall: {this.state.Tall}</Text>
-          <Button
-            title="Đăng Xuất"
-            onPress={() => this.props.navigation.navigate('Login')}
-          />
-        </View>
+        {this.state.loading ? (
+          <ActivityIndicator size="large" />
+        ) : (
+          <View>
+            <View style={styles.container}>
+              <Text style={styles.Texttitle}>Thông Tin Cá Nhân</Text>
+              <Image
+                style={styles.tinyImages}
+                source={{
+                  uri:
+                    'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSAArHbV6gqS70hTQBiPnvI-mRMZw85ItexDw&usqp=CAU',
+                }}
+              />
+              <Text style={styles.titles}> Họ Và Tên: {this.state.Name}</Text>
+              <Text style={styles.titles}>Năm Sinh: {this.state.Age}</Text>
+              <Text style={styles.titles}>Cân Nặng: {this.state.Heavy}</Text>
+              <Text style={styles.titles}>Chiều Cao{this.state.Tall}</Text>
+            </View>
+            <Button
+              title="Đăng Xuất"
+              onPress={() => this.props.navigation.navigate('Login')}
+            />
+          </View>
+        )}
       </View>
     );
   }
@@ -72,12 +88,65 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: 'rgb(234, 195, 176)',
   },
-  tops: {
-    flex: 3,
+  tinyImages: {
+    flex: 1,
+    alignItems: 'center',
+    width: 180,
+    height: 180,
+    borderRadius: 80,
   },
-  bottoms: {
-    flex: 7,
+  profileImgContainer: {
+    marginLeft: 8,
+    height: 180,
+    width: 180,
+    borderRadius: 40,
+  },
+  titles: {
+    padding: 20,
+    color: '#111111',
+    fontSize: 18,
+  },
+  profileImg: {
+    height: 180,
+    width: 180,
+    borderRadius: 40,
+  },
+  container: {
+    padding: 20,
+    paddingLeft: 30,
+    paddingRight: 20,
+  },
+  viewrow: {
+    flex: 1,
+  },
+  Textleft: {
+    marginLeft: 20,
+    fontSize: 18,
+    fontWeight: '800',
+    color: '#000000',
+  },
+  Textright: {
+    color: '#222222',
+    fontSize: 18,
+    fontWeight: '400',
+  },
+  scrollView: {
+    marginHorizontal: 20,
+  },
+  Texttitle: {
+    paddingBottom: 10,
+    fontSize: 25,
+    textAlign: 'center',
+  },
+  headers: {
+    marginTop: 32,
+    fontSize: 18,
+    fontWeight: '400',
+    textAlign: 'center',
+  },
+  form: {
+    marginBottom: 48,
+    marginHorizontal: 30,
   },
 });

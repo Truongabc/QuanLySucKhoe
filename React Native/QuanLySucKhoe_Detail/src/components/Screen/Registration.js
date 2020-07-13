@@ -37,7 +37,7 @@ export default class Registration extends Component {
   render() {
     return (
       <View styles={styles.container}>
-        <Text style={styles.headers}>Vui lòng đăng kí!</Text>
+        <Text style={styles.headers}>Vui lòng đăng ký!</Text>
         <View style={styles.erreShow}>
           {this.state.errorShow && (
             <Text style={styles.erreShow}>{this.state.errorShow}</Text>
@@ -76,7 +76,7 @@ export default class Registration extends Component {
         <TouchableOpacity
           style={styles.button}
           onPress={this.handleRegistration}>
-          <Text style={styles.buttonWord}>Đăng Kí</Text>
+          <Text style={styles.buttonWord}>Đăng Ký</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.buttonReg}

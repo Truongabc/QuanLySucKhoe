@@ -64,7 +64,7 @@ export default class Registration extends Component {
           style={styles.buttonReg}
           onPress={() => this.props.navigation.navigate('Registration')}>
           <Text style={styles.buttonWord2}>
-            Chưa có tài khoản? <Text style={styles.buttonWord3}>Đăng kí</Text>
+            Chưa có tài khoản? <Text style={styles.buttonWord3}>Đăng ký</Text>
           </Text>
         </TouchableOpacity>
         <TouchableOpacity

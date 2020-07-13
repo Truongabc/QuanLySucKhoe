@@ -133,7 +133,7 @@ export default class detailCalo extends Component {
                         onPress={() => {
                           alert(
                             'Lượng Calo của món!' +
-                              item.Nam +
+                              item.Name +
                               ' là:' +
                               item.Calo,
                           );
@@ -161,7 +161,7 @@ export default class detailCalo extends Component {
                         onPress={() => {
                           alert(
                             'Lượng Calo của món!' +
-                              item.Nam +
+                              item.Name +
                               ' là:' +
                               item.Calo,
                           );
@@ -189,7 +189,7 @@ export default class detailCalo extends Component {
                         onPress={() => {
                           alert(
                             'Lượng Calo của món!' +
-                              item.Nam +
+                              item.Name +
                               ' là:' +
                               item.Calo,
                           );
