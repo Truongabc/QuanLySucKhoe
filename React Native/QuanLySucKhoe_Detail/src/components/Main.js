@@ -22,6 +22,7 @@ import detailMenuEx from './Screen/detailMenuEx';
 import chart from './Screen/chart';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import detailCalo from './Screen/detailCalo';
+import update from './Screen/update';
 const Stack = createStackNavigator();
 // const Tab = createBottomTabNavigator();
 // const isLoggedIn = false;//
@@ -59,6 +60,11 @@ function Main() {
           options={{headerShown: false}}
           name="Registration"
           component={RegistrationComponents}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="updateProfile"
+          component={update}
         />
         <Stack.Screen
           options={{headerShown: false}}

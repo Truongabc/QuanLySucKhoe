@@ -182,7 +182,7 @@ export default class SleepComponents extends Component {
     ];
     return (
       <ImageBackground
-        source={require('../img/bgSleep.jpg')}
+        source={require('../img/bg.jpg')}
         style={styles.Container}>
         <View style={styles.Tops}>
           <Text style={styles.buttonview}>{this.state.time}</Text>
